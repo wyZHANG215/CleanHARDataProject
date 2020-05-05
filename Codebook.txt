@@ -1,0 +1,40 @@
+The courseProject.R file is the script to perform the steps of prepare the clean data.
+
+Step 1: download data.
+	Download the zipped file UCI HAR Dataset.zip from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+	then unzip the file into the data folder.
+
+Step 2: load data.
+	Load data into tables (data.frames).
+	Load features from features.text, contains 561 observations and 2 variables, which are an sequential integer and a factor, converted to 
+	character, is the measurements name.
+	
+	Load data.train.x from X_train.txt, contains 7352 observations and 561 numerical variables.
+	Load data.train.y from y_train.txt, contains 7352 observations and 1 integer variables.
+	Load data.train.subject from subject_train.txt, contains 7352 observations and 1 integer variables.
+	Combine data.train.x, data.train.y and data.train.subject to data.train, assign feature as the data frame name.
+	
+	Similarly, get data.test with 2947 observations of 563 variables.
+
+Step 3:	bind test and train data.
+	Then rbind data.train and data.test to get data.all, with 10299 observations of 563 variables.
+
+Step 4: Extracts only the measurements on the mean and standard deviation for each measurement.
+
+Step 5: Uses descriptive activity names
+	Load the activity.labels from activity_labels.txt, contains 6 observations and 2 variables, which are an sequential integer and a factor, converted to 
+	character, is the measurements name.
+	Update activity in data.sub with the description activity.labels.
+
+Step 6: labels the data set with descriptive variable names, with the following steps:
+	Get rid of the parenthsis in the variable names.
+	Replace letter t with TimeDomain- for columns start with t.
+	Replace letter f with FrequencyDomain- for columns start with f.
+	Replace letters Acc with Accelerometer.
+	Replace letters Gyro with Gyroscope.
+	Replace letters Mag with Magnitude.
+	Replace letters std with StandardDeviation.
+	
+Step 7: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+	Get the tidy data, aggregated on each activity and each subject, with 180 observations and 1 character variables for activity, 1 integer 
+	variable for subject number, and 89 numerical variables.
